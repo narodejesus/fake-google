@@ -185,7 +185,7 @@
           searchResults.innerHTML = '';
           
           data.forEach(result => {
-            if (result.header.toLowerCase().includes(searchTerm) || result.paragraph.toLowerCase().includes(searchTerm)) {
+            // if (result.header.toLowerCase().includes(searchTerm) || result.paragraph.toLowerCase().includes(searchTerm)) {
               const header = document.createElement('h2');
               const container = document.createElement('div');
               container.className = 'searchresult';
@@ -205,7 +205,7 @@
               container.appendChild(paragraph);
 
               searchResults.appendChild(container);
-            }
+            // }
           });
         });
       </script>
