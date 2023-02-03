@@ -177,22 +177,21 @@
         ];
 
         const getResult = (result) => {
-            fetch('https://hipages-data-core-dev-ws.cloud.databricks.com/model-endpoint/hackathon_sem/Staging/invocations', {
+
+            const options = {
             method: 'POST',
             headers: {
-                'Authorization': 'Token dapif6ef040b8c75fb8b2ac2657b581c6dcc',
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                Authorization: 'Basic dG9rZW46ZGFwaWY2ZWYwNDBiOGM3NWZiOGIyYWMyNjU3YjU4MWM2ZGNj'
             },
-            body: JSON.stringify({
-                dataframe_records: [{
-                search_term: 'concrete'
-                }]
-            })
-            })
+            body: '{"dataframe_records":[{"search_term":"'+"concrete"+'}]}'
+            };
+
+            return fetch(options)
             .then(res => res.json())
             .then(data => console.log(data))
             .catch(error => console.error(error));
-            
+
         }
 
         const searchInput = document.querySelector('#searchbartext');
