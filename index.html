@@ -179,12 +179,12 @@
         const getResult = (result) => {
 
             const options = {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                Authorization: 'Basic dG9rZW46ZGFwaWY2ZWYwNDBiOGM3NWZiOGIyYWMyNjU3YjU4MWM2ZGNj'
-            },
-            body: '{"dataframe_records":[{"search_term":"'+"concrete"+'}]}'
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    Authorization: 'Basic dG9rZW46ZGFwaWY2ZWYwNDBiOGM3NWZiOGIyYWMyNjU3YjU4MWM2ZGNj'
+                },
+                body: '{"dataframe_records":[{"search_term":"'+"concrete"+'}]}'
             };
 
             return fetch('https://hipages-data-core-dev-ws.cloud.databricks.com/model-endpoint/hackathon_sem/Staging/invocations', options)
