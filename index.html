@@ -175,16 +175,38 @@
             paragraph: 'This is the third search result.'
           }
         ];
+
+        const getResult = (result) => {
+            fetch('https://hipages-data-core-dev-ws.cloud.databricks.com/model-endpoint/hackathon_sem/Staging/invocations', {
+            method: 'POST',
+            headers: {
+                'Authorization': 'Basic ' + btoa('token:' + 'dapif6ef040b8c75fb8b2ac2657b581c6dcc'),
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                dataframe_records: [{
+                search_term: 'concrete'
+                }]
+            })
+            })
+            .then(res => res.json())
+            .then(data => console.log(data))
+            .catch(error => console.error(error));
+            
+        }
+
         const searchInput = document.querySelector('#searchbartext');
         const searchButton = document.querySelector('#searchbarbutton');
         const searchResults = document.querySelector('#searchresultsareacustom');
         
-        searchButton.addEventListener('click', function() {
+        searchButton.addEventListener('click', async function() {
           const searchTerm = searchInput.value.toLowerCase();
-          console.log({searchResults})
+
+          const result = await getResult(searchTerm)
+
           searchResults.innerHTML = '';
           
-          data.forEach(result => {
+          result.forEach(result => {
             // if (result.header.toLowerCase().includes(searchTerm) || result.paragraph.toLowerCase().includes(searchTerm)) {
               const header = document.createElement('h2');
               const container = document.createElement('div');
