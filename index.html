@@ -194,6 +194,24 @@
 
         }
 
+        const getRE = () => {
+            const options = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: 'Basic dG9rZW46ZGFwaWY2ZWYwNDBiOGM3NWZiOGIyYWMyNjU3YjU4MWM2ZGNj'
+            },
+            body: '{"dataframe_records":[{"search_term":"air condition"}]}'
+            };
+
+            return fetch('https://hipages-data-core-dev-ws.cloud.databricks.com/model-endpoint/hackathon_sem/Staging/invocations', options)
+            .then(response => response.json())
+            .then(response => console.log(response))
+            .catch(err => console.error(err));
+        }
+
+        getRE()
+
         const searchInput = document.querySelector('#searchbartext');
         const searchButton = document.querySelector('#searchbarbutton');
         const searchResults = document.querySelector('#searchresultsareacustom');
